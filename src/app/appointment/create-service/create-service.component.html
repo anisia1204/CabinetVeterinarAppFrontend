@@ -1,0 +1,23 @@
+<div style="text-align: center">
+  <h1 style="margin-bottom: 30px">Create A New Service</h1>
+</div>
+<div class="col-md-6 offset-md-3">
+<form (ngSubmit)="onSubmit()" #newForm="ngForm">
+  <div class="mb-3">
+    <label for="serviceName" class="form-label">Service Name</label>
+    <input type ="text" class="form-control" id="serviceName" [(ngModel)] = "service.serviceName" name="serviceName" required>
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input type="text" class="form-control" id="price" [(ngModel)] = "service.price" name="price" required>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <button type="button" class="btn btn-outline-dark" (click)="goToAddAppointment()">Back</button>
+    </div>
+    <div class="col-2">
+      <button type="submit" class="btn btn-outline-success" [disabled]="!newForm.form.valid" >Submit</button>
+    </div>
+  </div>
+</form>
+</div>

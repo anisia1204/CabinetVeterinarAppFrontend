@@ -1,0 +1,51 @@
+<div style="text-align: center">
+  <h1 style="margin-bottom: 30px">Update An Appointment</h1>
+</div>
+<div class="col-md-6 offset-md-3">
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="animalName" class="form-label">Animal name</label>
+      <input type="text" class="form-control" id="animalName" [(ngModel)]="appointment.animalName" name="animalName">
+    </div>
+    <div class="mb-3">
+      <label for="doctorName" class="form-label">Doctor name</label>
+      <input type="text" class="form-control" id="doctorName" [(ngModel)]="appointment.doctor" name="doctor">
+    </div>
+    <div class="mb-3">
+      <label for="dateAndTime" class="form-label">Date and time</label>
+      <input placeholder="dd-MM HH:mm" type="text" class="form-control" id="dateAndTime"
+             [(ngModel)]="appointment.dateAndTime" name="dateAndTime">
+    </div>
+    <div>
+      <label class="form-label">Services</label>
+      <div class="mb-3 form-check" *ngFor="let s of allServices">
+        <input type="checkbox" class="form-check-input" [checked]="isServiceSelected(s)"
+               (change)="toggleServiceSelection(s)" name="selectedService">
+        <label class="form-check-label">{{s.serviceName}} - {{s.price | currency}}</label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="diagnostic" class="form-label">Diagnostic</label>
+      <input type="text" class="form-control" id="diagnostic"
+             [(ngModel)]="appointment.diagnostic" name="diagnostic">
+    </div>
+    <div class="mb-3">
+
+      <label class="form-label">Status - these are the only possible options:</label>
+      <div class="row">
+        <div class="col" *ngFor="let s of statusTypes">
+          <label class="form-label">{{s}}</label>
+        </div>
+      </div>
+      <input type="text" class="form-control" id="status"
+             [(ngModel)]="appointment.status" name="status">
+    </div>
+
+    <div class="d-grid gap-2">
+      <button class="btn btn-outline-success" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+
+
